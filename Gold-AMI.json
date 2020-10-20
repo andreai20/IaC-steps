@@ -1,0 +1,23 @@
+{
+  "builders": [
+    {
+      "name": "Prometheus",
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "ami_name": "Promethus_Server",
+      "source_ami": "ami-032930428bf1abbff",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user"
+    }
+
+   {
+      "name":"Grafana",
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "ami_name": "Grafana_Server",
+      "source_ami": "ami-032930428bf1abbff",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user"
+    }
+  ]
+}
