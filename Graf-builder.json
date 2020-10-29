@@ -1,0 +1,37 @@
+{
+  "variables": {
+    "aws_region": "eu-west-1"
+  },
+
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "eu-west-1",
+      "instance_type": "t2.micro",
+      "source_ami": "ami-0bb3fad3c0286ebd5",
+      "ssh_username": "ec2-user",
+      "ami_name": "Graf_public_image",
+      "vpc_id": "vpc-0162cc1b715c633a7",
+      "subnet_id": "subnet-04459ace7c387593e",
+      "security_group_id": "sg-0c39db0807600303a"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "graf.sh"
+    },
+    {
+      "type": "file",
+      "source": "DevOps_ProjectII.pem",
+      "destination": "~/"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "chmod 400 ~/DevOps_ProjectII.pem",
+        "cat ~/DevOps_ProjectII.pem >> ~/.ssh/authorized_keys"
+      ]
+    }
+  ]
+}
